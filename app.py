@@ -28,8 +28,8 @@ Estrutura:
 1. Título da aula
 2. Conteúdo principal (vocabulário, regra ou texto, conforme o foco), com explicação clara.
    Se o nível for A1 ou A2, explica em português.
-3. Exemplos (8 frases)
-4. Exercícios (10 exercícios variados)
+3. Exemplos (6 frases)
+4. Exercícios (8 exercícios variados)
 5. Soluções dos exercícios (para o professor)
 
 Usa linguagem adequada ao nível {nivel} e não inventes factos."""
@@ -43,14 +43,14 @@ def chamar_gemini(prompt):
 
     for modelo in MODELOS:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent"
-        for t in range(3):
+        for t in range(2):
             try:
                 r = requests.post(
                     url,
                     headers={"x-goog-api-key": chave},
                     json={
                         "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-                        "generationConfig": {"maxOutputTokens": 4000},
+                        "generationConfig": {"maxOutputTokens": 2500},
                     },
                     timeout=60,
                 )
